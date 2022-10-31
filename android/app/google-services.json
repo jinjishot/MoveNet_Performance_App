@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "189589002243",
+    "project_id": "model-performance-database",
+    "storage_bucket": "model-performance-database.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:189589002243:android:49b1d0c4a99ea78d475636",
+        "android_client_info": {
+          "package_name": "com.example.model_performance_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "189589002243-hffj43d5ufcvihv5tsa39dfogdlasd5v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCmkFfcnfwDn4Gu3UJ-1GAPHvVuUsaynOs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "189589002243-hffj43d5ufcvihv5tsa39dfogdlasd5v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

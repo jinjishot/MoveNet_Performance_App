@@ -36,6 +36,22 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
+  export_video_frame: ^0.0.7
+  tflite_flutter: ^0.9.0
+  tflite_flutter_helper:
+    git:
+      url: https://github.com/elephantum/tflite_flutter_helper.git
+      ref: a7d7a59a33f7cffa0a2a12ab05625807622cc97a
+  image: ^3.2.0
+  path: ^1.8.2
+  stop_watch_timer: ^2.0.0
+  form_field_validator: ^1.1.0
+  image_picker: ^0.8.5+3
+  # video_player: ^2.4.7
+
+  firebase_core: ^1.24.0
+  cloud_firestore: ^3.5.1
+  # firebase_storage: ^10.3.11
 
 dev_dependencies:
   flutter_test:
@@ -63,6 +79,8 @@ flutter:
   # assets:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
+  assets:
+    - assets/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
