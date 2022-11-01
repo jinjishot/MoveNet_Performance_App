@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.model_performance_app">
    <application
-        android:label="model_performance_app"
+        android:label="MoveNetPerformance"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
