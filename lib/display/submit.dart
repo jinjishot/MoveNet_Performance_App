@@ -93,38 +93,6 @@ class _SubmitState extends State<Submit> {
                           },
                         ),
                         SizedBox(
-                          height: 20,
-                        ),
-                        Text(
-                          'Ram',
-                          style: TextStyle(fontSize: 20),
-                        ),
-                        TextFormField(
-                          style: TextStyle(fontSize: 18),
-                          validator: RequiredValidator(
-                              errorText: "Please type your device ram."),
-                          keyboardType: TextInputType.number,
-                          onSaved: (ram) {
-                            myMobile.ram = ram;
-                          },
-                        ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        Text(
-                          'Rom',
-                          style: TextStyle(fontSize: 20),
-                        ),
-                        TextFormField(
-                          style: TextStyle(fontSize: 18),
-                          validator: RequiredValidator(
-                              errorText: "Please type your device rom."),
-                          keyboardType: TextInputType.number,
-                          onSaved: (rom) {
-                            myMobile.rom = rom;
-                          },
-                        ),
-                        SizedBox(
                           height: 50,
                         ),
                         SizedBox(
@@ -137,8 +105,6 @@ class _SubmitState extends State<Submit> {
                                     'Device': {
                                       "Brand": myMobile.brand,
                                       "Model": myMobile.model,
-                                      "Ram": myMobile.ram,
-                                      "Rom": myMobile.rom,
                                     },
                                     'MoveNet_Thunder_Float16': {
                                       'Duration': score.duration[0],
