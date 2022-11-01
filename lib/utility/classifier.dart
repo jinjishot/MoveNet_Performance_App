@@ -36,7 +36,7 @@ class Classifier {
         .add(ResizeWithCropOrPadOp(padSize, padSize))
         .add(ResizeOp(inputSize, inputSize, ResizeMethod.BILINEAR))
         .build();
-        
+
     inputImage = imageProcessor.process(inputImage);
     return inputImage;
   }
@@ -82,7 +82,8 @@ class Classifier {
     var x, y, c;
 
     for (var i = 0; i < 51; i += 3) {
-      y = (((data[0 + i] - 0.21875)/(1-(2*0.21875)))*1080).toInt(); //640
+      y = (((data[0 + i] - 0.21875) / (1 - (2 * 0.21875))) * 1080)
+          .toInt(); //640
       x = (data[1 + i] * 1920).toInt(); //480
       c = (data[2 + i]);
       result.add([x, y, c]);

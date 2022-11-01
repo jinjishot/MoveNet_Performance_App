@@ -54,7 +54,7 @@ class _StartPageState extends State<StartPage> {
                   ),
                 if (!_isVisble)
                   Text(
-                    'This process will spend times around 1-2 minutes',
+                    'This process will be spend times',
                     style: TextStyle(
                         fontSize: 16,
                         color: Colors.white),
