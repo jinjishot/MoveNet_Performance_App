@@ -51,7 +51,8 @@ class Classifier {
       _interpreter = interpreter ??
           await Interpreter.fromAsset(
             asset,
-            options: InterpreterOptions()..threads = 4,
+            // options: InterpreterOptions()..threads = 4,
+            options: InterpreterOptions(),
           );
     } catch (e) {
       print("Error while creating interpreter: $e");
