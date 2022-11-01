@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:model_performance_app/display/submit.dart';
 import 'start_page.dart';
 
@@ -97,7 +98,7 @@ class _ShowScoreState extends State<ShowScore> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "MoveNet Thunder Float 16",
+                    "MoveNet Lightning Float 16",
                     style: TextStyle(fontSize: 24, color: Colors.white),
                   ),
                   Text(
@@ -122,7 +123,7 @@ class _ShowScoreState extends State<ShowScore> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "MoveNet Thunder Int 8",
+                    "MoveNet Lightning Int 8",
                     style: TextStyle(fontSize: 24, color: Colors.white),
                   ),
                   Text(

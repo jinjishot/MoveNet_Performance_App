@@ -15,7 +15,8 @@ class _FirstPageState extends State<FirstPage> {
       body: GestureDetector(
         behavior: HitTestBehavior.opaque,
         onTap: () {
-          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
+          Navigator.pushReplacement(context,
+              MaterialPageRoute(builder: (context) {
             return StartPage();
           }));
         },
@@ -28,12 +29,25 @@ class _FirstPageState extends State<FirstPage> {
               colors: [Colors.blue, Colors.red],
             )),
             child: Center(
-              child: Text(
-                'Tap to continue',
-                style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'MoveNet Model Performance',
+                    style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white),
+                  ),
+                  SizedBox(height: 250,),
+                  Text(
+                    'Tap to continue',
+                    style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white),
+                  ),
+                ],
               ),
             ),
           ),

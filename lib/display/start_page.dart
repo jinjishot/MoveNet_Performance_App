@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:model_performance_app/display/show_score.dart';
 import 'package:model_performance_app/model/score.dart';
 import 'package:model_performance_app/utility/predicted.dart';
@@ -35,39 +36,54 @@ class _StartPageState extends State<StartPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                if (_isVisble)
-                  Text("MoveNet Performance",
+                  Text("MoveNet Model Performance",
                       style: TextStyle(
                           fontSize: 24,
                           fontWeight: FontWeight.bold,
                           color: Colors.white)),
                 if (!_isVisble)
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(0, 30, 0, 15),
+                    child: Text(
+                      'Wait for a moment...',
+                      style: TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white),
+                    ),
+                  ),
+                if (!_isVisble)
                   Text(
-                    'Wait for a moment...',
+                    'This process will spend times around 1-2 minutes',
                     style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
                         color: Colors.white),
                   ),
                 SizedBox(
-                  height: 40,
+                  height: 220,
                 ),
                 if (_isVisble)
-                  ElevatedButton(
-                    onPressed: () async {
-                      setState(() {
-                        _isVisble = false;
-                      });
-                      await predict.predicted();
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(35, 0, 35, 0),
+                    child: SizedBox(
+                      width: double.infinity,
+                      child: ElevatedButton(
+                        onPressed: () async {
+                          setState(() {
+                            _isVisble = false;
+                          });
+                          await predict.predicted();
 
-                      Navigator.pushReplacement(context,
-                          MaterialPageRoute(builder: (context) {
-                        return ShowScore();
-                      }));
-                    },
-                    child: Text(
-                      "Start",
-                      style: TextStyle(fontSize: 16),
+                          Navigator.pushReplacement(context,
+                              MaterialPageRoute(builder: (context) {
+                            return ShowScore();
+                          }));
+                        },
+                        child: Text(
+                          "Start",
+                          style: TextStyle(fontSize: 20),
+                        ),
+                      ),
                     ),
                   ),
                 if (!_isVisble) CircularProgressIndicator(

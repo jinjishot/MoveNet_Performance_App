@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'dart:math';
 
 import 'package:image/image.dart' as image_lib;
@@ -14,26 +13,8 @@ class Classifier {
   Map<int, Object> outputs = {};
   TensorBuffer outputLocations = TensorBufferFloat([]);
 
-  Stopwatch s = Stopwatch();
-
-  int frameNo = 0;
-
   Classifier({Interpreter? interpreter}) {
     loadModel(interpreter: interpreter);
-  }
-
-  printDebugData() {
-    print('Frame: ' +
-        frameNo.toString() +
-        " time: " +
-        s.elapsedMilliseconds.toString() +
-        " type: " +
-        inputImage.dataType.toString() +
-        " height: " +
-        inputImage.height.toString() +
-        " width: " +
-        inputImage.width.toString());
-    printWrapped(parseLandmarkData().toString());
   }
 
   void printWrapped(String text) {
@@ -42,67 +23,12 @@ class Classifier {
   }
 
   void performOperations(image_lib.Image cameraImage, inputSize) {
-    s.start();
-
-    // image_lib.Image convertedImage = convertCameraImage(cameraImage);
-    // if (Platform.isAndroid) {
-    //   convertedImage = image_lib.copyRotate(convertedImage, 270);
-    //   convertedImage = image_lib.flipHorizontal(convertedImage);
-    // }
     inputImage = TensorImage(TfLiteType.uint8);
     inputImage.loadImage(cameraImage);
     inputImage = getProcessedImage(inputSize);
 
     inputs = [inputImage.buffer];
-
-    s.stop();
-    frameNo += 1;
-
-    // printDebugData();
-    s.reset();
   }
-
-  // static image_lib.Image convertCameraImage(Image cameraImage) {
-  //   final int width = (cameraImage.width)!.toInt();
-  //   final int height = (cameraImage.height)!.toInt();
-
-  //   final int uvRowStride = cameraImage.planes[1].bytesPerRow;
-  //   final int? uvPixelStride = cameraImage.planes[1].bytesPerPixel;
-
-  //   final image = image_lib.Image(width, height);
-
-  //   for (int w = 0; w < width; w++) {
-  //     for (int h = 0; h < height; h++) {
-  //       final int uvIndex =
-  //           uvPixelStride! * (w / 2).floor() + uvRowStride * (h / 2).floor();
-  //       final int index = h * width + w;
-
-  //       final y = cameraImage.planes[0].bytes[index];
-  //       final u = cameraImage.planes[1].bytes[uvIndex];
-  //       final v = cameraImage.planes[2].bytes[uvIndex];
-
-  //       image.data[index] = yuv2rgb(y, u, v);
-  //     }
-  //   }
-  //   return image;
-  // }
-
-  // static int yuv2rgb(int y, int u, int v) {
-  //   // Convert yuv pixel to rgb
-  //   int r = (y + v * 1436 / 1024 - 179).round();
-  //   int g = (y - u * 46549 / 131072 + 44 - v * 93604 / 131072 + 91).round();
-  //   int b = (y + u * 1814 / 1024 - 227).round();
-
-  //   // Clipping RGB values to be inside boundaries [ 0 , 255 ]
-  //   r = r.clamp(0, 255);
-  //   g = g.clamp(0, 255);
-  //   b = b.clamp(0, 255);
-
-  //   return 0xff000000 |
-  //       ((b << 16) & 0xff0000) |
-  //       ((g << 8) & 0xff00) |
-  //       (r & 0xff);
-  // }
 
   TensorImage getProcessedImage(inputSize) {
     int padSize = max(inputImage.height, inputImage.width);
@@ -121,11 +47,6 @@ class Classifier {
   }
 
   loadModel({Interpreter? interpreter, asset}) async {
-    // String asset = 'movenet_thunder_float16.tflite';
-    // if(count == 1) asset = 'movenet_thunder_int8.tflite';
-    // else if(count == 2) asset = 'movenet_lightning_float16.tflite';
-    // else asset = 'movenet_lightning_int8.tflite';
-
     try {
       _interpreter = interpreter ??
           await Interpreter.fromAsset(
