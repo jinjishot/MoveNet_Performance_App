@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:model_performance_app/display/thanks_page.dart';
 import 'package:model_performance_app/model/mobile.dart';
+import 'start_page.dart';
 
 class Submit extends StatefulWidget {
   const Submit({super.key});
@@ -132,12 +133,33 @@ class _SubmitState extends State<Submit> {
                               if (formkey.currentState!.validate()) {
                                 formkey.currentState!.save();
                                 await _mobileCollection.add({
-                                  'Device' : {
+                                  'Device': {
                                     "Brand": myMobile.brand,
                                     "Model": myMobile.model,
                                     "Ram": myMobile.ram,
                                     "Rom": myMobile.rom,
-                                  }
+                                  },
+                                  'MoveNet_Thunder_Float16': {
+                                    'Duration': score.duration[0],
+                                    'Score': score.score[0],
+                                    'Frame_Sec': score.frame_sec[0]
+                                  },
+                                  'MoveNet_Thunder_Int8': {
+                                    'Duration': score.duration[1],
+                                    'Score': score.score[1],
+                                    'Frame_Sec': score.frame_sec[1]
+                                  },
+                                  'MoveNet_Lightning_Float16': {
+                                    'Duration': score.duration[2],
+                                    'Score': score.score[2],
+                                    'Frame_Sec': score.frame_sec[2]
+                                  },
+                                  'MoveNet_Lightning_Int8': {
+                                    'Duration': score.duration[3],
+                                    'Score': score.score[3],
+                                    'Frame_Sec': score.frame_sec[3]
+                                  },
+                                  'Total_Duration': score.totalTime
                                 });
                                 formkey.currentState!.reset();
                                 Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {

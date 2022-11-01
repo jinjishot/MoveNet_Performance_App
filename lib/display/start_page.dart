@@ -4,9 +4,9 @@ import 'package:model_performance_app/model/score.dart';
 import 'package:model_performance_app/utility/predicted.dart';
 
 Score score = Score(
-  score: [4],
-  duration: [''],
-  frame_sec: [4],
+  score: [0, 0, 0, 0],
+  duration: ['', '', '', ''],
+  frame_sec: [0, 0, 0, 0],
 );
 
 class StartPage extends StatefulWidget {
@@ -19,13 +19,6 @@ class StartPage extends StatefulWidget {
 class _StartPageState extends State<StartPage> {
   PredictedKeypoint predict = PredictedKeypoint();
   bool _isVisble = true;
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    // score.score![0] = 0;
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -66,6 +59,7 @@ class _StartPageState extends State<StartPage> {
                         _isVisble = false;
                       });
                       await predict.predicted();
+
                       Navigator.pushReplacement(context,
                           MaterialPageRoute(builder: (context) {
                         return ShowScore();

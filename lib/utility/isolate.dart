@@ -33,7 +33,7 @@ class IsolateUtils {
         Classifier classifier = Classifier(
             interpreter:
                 Interpreter.fromAddress(isolateData.interpreterAddress));
-        classifier.performOperations(isolateData.cameraImage);
+        classifier.performOperations(isolateData.cameraImage, isolateData.inputSize);
         classifier.runModel();
         List<dynamic> results = classifier.parseLandmarkData();
         isolateData.responsePort.send(results);
@@ -47,6 +47,7 @@ class IsolateData {
   image_lib.Image cameraImage;
   int interpreterAddress;
   late SendPort responsePort;
+  int inputSize;
 
-  IsolateData(this.cameraImage, this.interpreterAddress);
+  IsolateData(this.cameraImage, this.interpreterAddress, this.inputSize);
 }

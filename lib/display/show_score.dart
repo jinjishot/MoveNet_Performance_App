@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:model_performance_app/display/submit.dart';
+import 'start_page.dart';
 
 class ShowScore extends StatefulWidget {
   const ShowScore({super.key});
@@ -37,7 +38,7 @@ class _ShowScoreState extends State<ShowScore> {
 
             Padding(
               padding: EdgeInsets.fromLTRB(55, 35, 0, 0),
-              child: Text('Total time = ', style: TextStyle(fontSize: 24, color: Colors.white)),
+              child: Text('Total time = ${score.totalTime}', style: TextStyle(fontSize: 24, color: Colors.white)),
             ),
 
             Padding(
@@ -50,15 +51,15 @@ class _ShowScoreState extends State<ShowScore> {
                     style: TextStyle(fontSize: 24, color: Colors.white),
                   ),
                   Text(
-                    "Duration = ",
+                    "Duration = ${score.duration[0]}",
                     style: TextStyle(fontSize: 20, color: Colors.white),
                   ),
                   Text(
-                    "Score = ",
+                    "Score = ${score.score[0]}",
                     style: TextStyle(fontSize: 20, color: Colors.white),
                   ),
                   Text(
-                    "Frame / Sec = ",
+                    "Frame / Sec = ${score.frame_sec[0]}",
                     style: TextStyle(fontSize: 20, color: Colors.white),
                   ),
                 ],
@@ -75,15 +76,15 @@ class _ShowScoreState extends State<ShowScore> {
                     style: TextStyle(fontSize: 24, color: Colors.white),
                   ),
                   Text(
-                    "Duration = ",
+                    "Duration = ${score.duration[1]}",
                     style: TextStyle(fontSize: 20, color: Colors.white),
                   ),
                   Text(
-                    "Score = ",
+                    "Score = ${score.score[1]}",
                     style: TextStyle(fontSize: 20, color: Colors.white),
                   ),
                   Text(
-                    "Frame / Sec = ",
+                    "Frame / Sec = ${score.frame_sec[1]}",
                     style: TextStyle(fontSize: 20, color: Colors.white),
                   ),
                 ],
@@ -100,15 +101,15 @@ class _ShowScoreState extends State<ShowScore> {
                     style: TextStyle(fontSize: 24, color: Colors.white),
                   ),
                   Text(
-                    "Duration = ",
+                    "Duration = ${score.duration[2]}",
                     style: TextStyle(fontSize: 20, color: Colors.white),
                   ),
                   Text(
-                    "Score = ",
+                    "Score = ${score.score[2]}",
                     style: TextStyle(fontSize: 20, color: Colors.white),
                   ),
                   Text(
-                    "Frame / Sec = ",
+                    "Frame / Sec = ${score.frame_sec[2]}",
                     style: TextStyle(fontSize: 20, color: Colors.white),
                   ),
                 ],
@@ -125,15 +126,15 @@ class _ShowScoreState extends State<ShowScore> {
                     style: TextStyle(fontSize: 24, color: Colors.white),
                   ),
                   Text(
-                    "Duration = ",
+                    "Duration = ${score.duration[3]}",
                     style: TextStyle(fontSize: 20, color: Colors.white),
                   ),
                   Text(
-                    "Score = ",
+                    "Score = ${score.score[3]}",
                     style: TextStyle(fontSize: 20, color: Colors.white),
                   ),
                   Text(
-                    "Frame / Sec = ",
+                    "Frame / Sec = ${score.frame_sec[3]}",
                     style: TextStyle(fontSize: 20, color: Colors.white),
                   ),
                 ],

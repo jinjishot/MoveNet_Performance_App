@@ -41,7 +41,7 @@ class Classifier {
     pattern.allMatches(text).forEach((match) => print(match.group(0)));
   }
 
-  void performOperations(image_lib.Image cameraImage) {
+  void performOperations(image_lib.Image cameraImage, inputSize) {
     s.start();
 
     // image_lib.Image convertedImage = convertCameraImage(cameraImage);
@@ -51,7 +51,7 @@ class Classifier {
     // }
     inputImage = TensorImage(TfLiteType.uint8);
     inputImage.loadImage(cameraImage);
-    inputImage = getProcessedImage();
+    inputImage = getProcessedImage(inputSize);
 
     inputs = [inputImage.buffer];
 
@@ -104,13 +104,13 @@ class Classifier {
   //       (r & 0xff);
   // }
 
-  TensorImage getProcessedImage() {
+  TensorImage getProcessedImage(inputSize) {
     int padSize = max(inputImage.height, inputImage.width);
     imageProcessor = ImageProcessorBuilder()
         .add(ResizeWithCropOrPadOp(padSize, padSize))
-        .add(ResizeOp(192, 192, ResizeMethod.BILINEAR))
+        .add(ResizeOp(inputSize, inputSize, ResizeMethod.BILINEAR))
         .build();
-
+        
     inputImage = imageProcessor.process(inputImage);
     return inputImage;
   }
@@ -120,11 +120,16 @@ class Classifier {
     interpreter.runForMultipleInputs(inputs, outputs);
   }
 
-  loadModel({Interpreter? interpreter}) async {
+  loadModel({Interpreter? interpreter, asset}) async {
+    // String asset = 'movenet_thunder_float16.tflite';
+    // if(count == 1) asset = 'movenet_thunder_int8.tflite';
+    // else if(count == 2) asset = 'movenet_lightning_float16.tflite';
+    // else asset = 'movenet_lightning_int8.tflite';
+
     try {
       _interpreter = interpreter ??
           await Interpreter.fromAsset(
-            "movenet_lightning_int8.tflite",
+            asset,
             options: InterpreterOptions()..threads = 4,
           );
     } catch (e) {
