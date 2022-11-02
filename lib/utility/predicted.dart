@@ -69,9 +69,12 @@ class PredictedKeypoint {
           _stopWatchModel.onStopTimer();
           _stopWatchModel.rawTime.listen((value) {
             score.duration[j] = StopWatchTimer.getDisplayTime(value);
+            
+            var minute = int.parse(StopWatchTimer.getDisplayTimeMinute(value)) * 60;
+            var seconds = int.parse(StopWatchTimer.getDisplayTimeSecond(value));
+            var millisec = int.parse(StopWatchTimer.getDisplayTimeMillisecond(value)) / 1000;
 
-            var duration = '${StopWatchTimer.getDisplayTimeSecond(value)}.${StopWatchTimer.getDisplayTimeMillisecond(value)}';
-            score.frame_sec[j] = double.parse((100/ double.parse(duration)).toStringAsFixed(2));
+            score.frame_sec[j] = double.parse((100 / (minute + seconds + millisec)).toStringAsFixed(2));
            });
           score.score[j] = double.parse((score.score[j] / 100).toStringAsFixed(2));
         }
